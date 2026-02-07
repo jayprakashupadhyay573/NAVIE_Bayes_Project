@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wholesale Customer Predictor</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+        }
+        .container {
+            width: 460px;
+            margin: auto;
+            margin-top: 40px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 12px rgba(0,0,0,0.15);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 12px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef3ff;
+            border-radius: 6px;
+        }
+        .confidence {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>Wholesale Customer Classification</h2>
+
+    <form action="/predict" method="post">
+
+        <label>Fresh (3 – 112151)</label>
+        <input type="number" name="Fresh" min="3" max="112151" required>
+
+        <label>Milk (55 – 73498)</label>
+        <input type="number" name="Milk" min="55" max="73498" required>
+
+        <label>Grocery (3 – 92780)</label>
+        <input type="number" name="Grocery" min="3" max="92780" required>
+
+        <label>Frozen (25 – 60869)</label>
+        <input type="number" name="Frozen" min="25" max="60869" required>
+
+        <label>Detergents & Paper (3 – 40827)</label>
+        <input type="number" name="Detergents_Paper" min="3" max="40827" required>
+
+        <label>Delicassen (3 – 47943)</label>
+        <input type="number" name="Delicassen" min="3" max="47943" required>
+
+        <button type="submit">Predict Customer Type</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <p><b>Customer Type:</b><br> {{ prediction }}</p>
+        <p class="confidence">Confidence: {{ confidence }}</p>
+        <p><b>Marketing Recommendation:</b><br>{{ suggestion | safe }}</p>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
