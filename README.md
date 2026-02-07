@@ -58,6 +58,7 @@ Delicassen          Delicatessen products
 📸 Demo
 
 The application provides real-time prediction with confidence score and marketing suggestions.
-
+Click here to watch:
+https://github.com/jayprakashupadhyay573/NAVIE_Bayes_Project/blob/main/demoNaiveBayes.mp4
 
 
